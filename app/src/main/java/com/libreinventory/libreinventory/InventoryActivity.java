@@ -1,26 +1,10 @@
 package com.libreinventory.libreinventory;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.annotation.TargetApi;
 import android.app.Activity;
-import android.app.LoaderManager.LoaderCallbacks;
-
-import android.content.CursorLoader;
-import android.content.Loader;
-import android.database.Cursor;
-import android.net.Uri;
-import android.os.AsyncTask;
-
-import android.os.Build;
 import android.os.Bundle;
-import android.provider.ContactsContract;
-import android.text.TextUtils;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -35,8 +19,6 @@ import com.libreinventory.libreinventory.model.InventoryItem;
 import com.libreinventory.libreinventory.widget.ProductsAutoCompleteAdapter;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 
 /**
@@ -79,7 +61,7 @@ public class InventoryActivity extends Activity implements OnClickListener {
             @Override
             public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
                                     long position) {
-                Article article = (Article)adapter.getItem((int)position);
+                Article article = (Article) adapter.getItem((int) position);
                 setInteger(mRootView, R.id.editTextRef, article.getId());
             }
         });
@@ -90,7 +72,7 @@ public class InventoryActivity extends Activity implements OnClickListener {
     public void onClick(View arg0) {
 
         Log.e("log click", "aaaa");
-        switch(arg0.getId()) {
+        switch (arg0.getId()) {
             case R.id.buttonOk:
                 saveInventory();
                 break;
@@ -100,7 +82,6 @@ public class InventoryActivity extends Activity implements OnClickListener {
                 break;
         }
     }
-
 
 
     private void saveInventory() {
@@ -116,13 +97,13 @@ public class InventoryActivity extends Activity implements OnClickListener {
         EditText refStr = (EditText) mRootView.findViewById(R.id.editTextRef);
 
         Log.e("ref", refStr.getText().toString());
-        int ref  = Integer.parseInt(refStr.getText().toString());
+        int ref = Integer.parseInt(refStr.getText().toString());
 
         EditText qStr = (EditText) mRootView.findViewById(R.id.editTextQuantite);
-        int q  = Integer.parseInt(qStr.getText().toString());
+        int q = Integer.parseInt(qStr.getText().toString());
 
         EditText locStr = (EditText) mRootView.findViewById(R.id.editTextLoc);
-        String loc  = locStr.getText().toString();
+        String loc = locStr.getText().toString();
 
         InventoryItem i = new InventoryItem();
         i.setArticleId(ref);

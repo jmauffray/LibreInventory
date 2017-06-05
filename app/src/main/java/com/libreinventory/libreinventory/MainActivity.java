@@ -3,14 +3,12 @@ package com.libreinventory.libreinventory;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.os.Environment;
-import android.view.View;
 import android.util.Log;
+import android.view.View;
 
 import com.libreinventory.libreinventory.db.InventoryItemDAO;
-import com.libreinventory.libreinventory.model.Article;
 import com.libreinventory.libreinventory.model.InventoryItem;
 
 import java.io.File;
@@ -86,8 +84,7 @@ public class MainActivity extends Activity {
         try {
             FileOutputStream stream = new FileOutputStream(file);
 
-            for(InventoryItem i: ii)
-            {
+            for (InventoryItem i : ii) {
                 String id = String.valueOf(i.getArticleId());
                 String q = String.valueOf(i.getQuantite());
 

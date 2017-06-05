@@ -5,6 +5,12 @@ package com.libreinventory.libreinventory.util;
  */
 
 
+import android.content.Context;
+import android.util.Log;
+
+import com.libreinventory.libreinventory.model.Article;
+import com.opencsv.CSVReader;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -16,19 +22,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
-
-import com.opencsv.CSVReader;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import android.content.Context;
-import android.util.Log;
-
 //import org.apache.commons.csv.CSVFormat;
-
-import com.libreinventory.libreinventory.model.Article;
 
 
 public class CsvUtil {
@@ -70,7 +64,7 @@ public class CsvUtil {
             Log.e("Error", e.toString());
         }
 
-        Log.w("csv","Article parse ended");
+        Log.w("csv", "Article parse ended");
 
         return articles;
     }

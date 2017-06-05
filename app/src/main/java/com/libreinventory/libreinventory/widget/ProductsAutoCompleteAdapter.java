@@ -1,17 +1,17 @@
 package com.libreinventory.libreinventory.widget;
 
-        import java.util.ArrayList;
-        import java.util.List;
+import android.content.Context;
+import android.util.Log;
+import android.util.Pair;
+import android.widget.ArrayAdapter;
+import android.widget.Filter;
+import android.widget.Filterable;
 
-        import android.content.Context;
-        import android.util.Log;
-        import android.util.Pair;
-        import android.widget.ArrayAdapter;
-        import android.widget.Filter;
-        import android.widget.Filterable;
+import com.libreinventory.libreinventory.config.Config;
+import com.libreinventory.libreinventory.model.Article;
 
-        import com.libreinventory.libreinventory.config.Config;
-        import com.libreinventory.libreinventory.model.Article;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ProductsAutoCompleteAdapter extends ArrayAdapter<Article> implements Filterable {
     private List<Article> resultList;
@@ -64,30 +64,27 @@ public class ProductsAutoCompleteAdapter extends ArrayAdapter<Article> implement
                     for (Pair<Article, String> cacheItem : cache) {
                         match = true;
                         for (String tokenLower : tokensLower) {
-                            if(!cacheItem.second.contains(tokenLower)) {
+                            if (!cacheItem.second.contains(tokenLower)) {
                                 match = false;
                                 break;
                             } else {
                             }
                         }
-                        if(match) {
+                        if (match) {
                             resultList1.add(cacheItem.first);
                         }
                     }
                     // Assign the data to the FilterResults
                     filterResults.values = resultList1;
                     filterResults.count = resultList1.size();
-                }
-                else
-                {
-                    synchronized(resultList)
-                    {
+                } else {
+                    synchronized (resultList) {
                         filterResults.values = resultList;
                         filterResults.count = resultList.size();
                     }
                 }
 
-                Log.w("duration","That took " + (System.currentTimeMillis() - startTime) +
+                Log.w("duration", "That took " + (System.currentTimeMillis() - startTime) +
                         " milliseconds");
 
                 return filterResults;
@@ -100,11 +97,11 @@ public class ProductsAutoCompleteAdapter extends ArrayAdapter<Article> implement
                 if (results != null && results.count > 0) {
 
                     notifyDataSetChanged();
-                }
-                else {
+                } else {
                     notifyDataSetInvalidated();
                 }
-            }};
+            }
+        };
         return filter;
     }
 
