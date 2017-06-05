@@ -1,20 +1,21 @@
 package com.libreinventory.libreinventory;
 
 import android.app.Activity;
-import android.content.Context;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Environment;
 import android.view.View;
+import android.widget.Toast;
 
 import com.libreinventory.libreinventory.db.InventoryItemDAO;
 
-import java.io.File;
 import java.sql.SQLException;
 
 
 public class MainActivity extends Activity {
 
+    private View mView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -31,6 +32,22 @@ public class MainActivity extends Activity {
 
     public void delInventory(View view) {
 
+        mView = view;
+        new AlertDialog.Builder(this)
+                .setTitle("Suppresion de l'inventaire")
+                .setMessage("Voulez vous vraiment supprimer l'inventaire ?")
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        delInventoryImpl(MainActivity.this.mView);
+                        Toast.makeText(MainActivity.this, "Inventaire supprimé", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .setNegativeButton(android.R.string.no, null).show();
+    }
+
+    private void delInventoryImpl(View view) {
         InventoryItemDAO dao = new InventoryItemDAO(view.getContext());
         try {
             dao.open();
@@ -42,19 +59,13 @@ public class MainActivity extends Activity {
 
     public void exportInventory(View view) {
 
-        Context context = view.getContext();
-        File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/test.csv");
-
-        ExportInventory ip = new ExportInventory(context);
+        ExportInventory ip = new ExportInventory(view.getContext());
         ip.execute();
     }
 
     public void importProduct(View view) {
 
-        Context context = view.getContext();
-        File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/test.csv");
-
-        ImportProduct ip = new ImportProduct(context);
+        ImportProduct ip = new ImportProduct(view.getContext());
         ip.execute();
     }
 

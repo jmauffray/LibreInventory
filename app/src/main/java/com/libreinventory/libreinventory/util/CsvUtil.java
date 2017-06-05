@@ -33,7 +33,6 @@ public class CsvUtil {
             return articles;
         }
 
-
         File file = new File(res);
         try {
 
@@ -55,7 +54,6 @@ public class CsvUtil {
 
                 articles.add(a);
             }
-            //return data;
 
         } catch (Exception e) {
             Log.e("Error", "Error for importing file");
