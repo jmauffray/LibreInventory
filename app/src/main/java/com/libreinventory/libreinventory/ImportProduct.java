@@ -1,6 +1,5 @@
 package com.libreinventory.libreinventory;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
@@ -18,51 +17,34 @@ import java.util.List;
 
 public class ImportProduct extends AsyncTask<String, String, String> {
 
-    Activity activity;
+    Context mContext;
+    private ProgressDialog mDialog;
 
-    Context context;
-    File file = null;
-    private ProgressDialog dialog;
-
-    public ImportProduct(Context context, Activity activity, File file) {
-        this.context = context;
-        this.activity = activity;
-        this.file = file;
+    public ImportProduct(Context context) {
+        this.mContext = context;
     }
 
     @Override
     protected void onPreExecute() {
-        dialog = new ProgressDialog(context);
-        dialog.setTitle("Importing Data into SecureIt DataBase");
-        dialog.setMessage("Please wait...");
-        dialog.setCancelable(false);
-        dialog.setIcon(android.R.drawable.ic_dialog_info);
-        dialog.show();
+        mDialog = new ProgressDialog(mContext);
+        mDialog.setTitle("Import des produits en cours");
+        mDialog.setMessage("Patience...");
+        mDialog.setCancelable(false);
+        mDialog.setIcon(android.R.drawable.ic_dialog_info);
+        mDialog.show();
     }
 
     @Override
     protected String doInBackground(String... params) {
 
-        File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/test.csv");
+        File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/products.csv");
 
         Log.e("article", file.getPath());
-
-        StringBuilder sb = new StringBuilder();
-        sb.append("id;name;code barre\n");
-        //String csv = "id;name;code barre\n1;camelia;123456\n2;buis;1234567\n";
-        for (int i = 0; i < 10000; ++i) {
-            sb.append(i);
-            sb.append(";camelia;123456\n");
-        }
-        String csv = sb.toString();
-        CsvUtil.saveCsv(csv, file.getPath(), context);
-
         List<Article> articles = CsvUtil.parseCsvArticles(file.getPath());
 
         for (Article article : articles) {
             Log.e("article", article.toString());
         }
-
 
         Config.articles = articles;
         for (Article article : Config.articles) {
@@ -70,20 +52,20 @@ public class ImportProduct extends AsyncTask<String, String, String> {
                     new Pair<Article, String>(article, article.toString().toLowerCase()));
         }
 
-
         return String.valueOf(articles.size());
     }
 
     protected void onPostExecute(String data) {
 
-        if (dialog.isShowing()) {
-            dialog.dismiss();
+        if (mDialog.isShowing()) {
+            mDialog.dismiss();
         }
 
         if (data.length() != 0) {
-            Toast.makeText(context, "File is built Successfully!" + "\n" + data, Toast.LENGTH_LONG).show();
+            Toast.makeText(mContext, "Import des produits terminé!" + "\n" + data + " produits importés",
+                    Toast.LENGTH_LONG).show();
         } else {
-            Toast.makeText(context, "File fail to build", Toast.LENGTH_SHORT).show();
+            Toast.makeText(mContext, "Import des produits échoué", Toast.LENGTH_SHORT).show();
         }
     }
 

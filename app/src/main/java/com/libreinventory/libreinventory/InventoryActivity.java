@@ -40,13 +40,14 @@ public class InventoryActivity extends Activity implements OnClickListener {
         setContentView(R.layout.activity_inventory);
         mRootView = getWindow().getDecorView();
 
+        //button listeners
         Button b = (Button) mRootView.findViewById(R.id.buttonOk);
         b.setOnClickListener(this);
 
         b = (Button) mRootView.findViewById(R.id.buttonCancel);
         b.setOnClickListener(this);
 
-
+        //autocomplete
         AutoCompleteTextView t =
                 (AutoCompleteTextView) mRootView.findViewById(
                         R.id.autoCompleteTextProduct);
@@ -83,20 +84,10 @@ public class InventoryActivity extends Activity implements OnClickListener {
         }
     }
 
-
     private void saveInventory() {
-        // your handler code here
-        InventoryItemDAO dao = new InventoryItemDAO(mRootView.getContext());
-        try {
-            dao.open();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
 
-
+        // read inventory
         EditText refStr = (EditText) mRootView.findViewById(R.id.editTextRef);
-
-        Log.e("ref", refStr.getText().toString());
         int ref = Integer.parseInt(refStr.getText().toString());
 
         EditText qStr = (EditText) mRootView.findViewById(R.id.editTextQuantite);
@@ -109,6 +100,14 @@ public class InventoryActivity extends Activity implements OnClickListener {
         i.setArticleId(ref);
         i.setQuantite(q);
         i.setLocalisation(loc);
+
+        //save
+        InventoryItemDAO dao = new InventoryItemDAO(mRootView.getContext());
+        try {
+            dao.open();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         dao.createVente(i);
 
     }

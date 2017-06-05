@@ -22,8 +22,6 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
-//import org.apache.commons.csv.CSVFormat;
-
 
 public class CsvUtil {
 
@@ -39,7 +37,7 @@ public class CsvUtil {
         File file = new File(res);
         try {
 
-            CSVReader reader = new CSVReader(new FileReader(file), ';');
+            CSVReader reader = new CSVReader(new FileReader(file), ',', '\"');
             String[] nextLine;
 
             boolean firstLine = true;
