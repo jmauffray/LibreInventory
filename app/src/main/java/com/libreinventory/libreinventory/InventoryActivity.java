@@ -2,7 +2,8 @@ package com.libreinventory.libreinventory;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.util.Log;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
@@ -11,6 +12,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.libreinventory.libreinventory.config.Config;
 import com.libreinventory.libreinventory.db.InventoryItemDAO;
@@ -21,24 +23,29 @@ import com.libreinventory.libreinventory.widget.ProductsAutoCompleteAdapter;
 import java.sql.SQLException;
 
 
-/**
- * A login screen that offers login via email/password.
- */
 public class InventoryActivity extends Activity implements OnClickListener {
-
 
     private View mRootView;
 
     // UI references.
+    private AutoCompleteTextView mProductText;
+    private EditText mBarCode;
     private EditText mReferenceText;
     private EditText mQuantiteText;
     private EditText mLocalisationText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inventory);
         mRootView = getWindow().getDecorView();
+
+        mProductText = (AutoCompleteTextView) mRootView.findViewById(R.id.autoCompleteTextProduct);
+        mBarCode = (EditText) mRootView.findViewById(R.id.editTextBarCode);
+        mReferenceText = (EditText) mRootView.findViewById(R.id.editTextRef);
+        mQuantiteText = (EditText) mRootView.findViewById(R.id.editTextQuantite);
+        mLocalisationText = (EditText) mRootView.findViewById(R.id.editTextLoc);
 
         //button listeners
         Button b = (Button) mRootView.findViewById(R.id.buttonOk);
@@ -46,6 +53,33 @@ public class InventoryActivity extends Activity implements OnClickListener {
 
         b = (Button) mRootView.findViewById(R.id.buttonCancel);
         b.setOnClickListener(this);
+
+        mBarCode.addTextChangedListener(new TextWatcher(){
+
+            public void afterTextChanged(Editable s) {
+                if(s.toString().length() == 13)
+                { //EAN13
+                    for(Article a:Config.articles)
+                    {
+                        if(a.getBarCode().equals(s))
+                        {
+                            mReferenceText.setText(String.valueOf(a.getId()));
+                        }
+                        else
+                        {
+                            mReferenceText.setText("Code barre inconnu");
+                        }
+                    }
+                }
+            }
+
+            public void beforeTextChanged(CharSequence s, int start, int count, int after)
+            {}
+
+            public void onTextChanged(CharSequence s, int start, int before, int count)
+            {}
+        });
+
 
         //autocomplete
         AutoCompleteTextView t =
@@ -64,6 +98,7 @@ public class InventoryActivity extends Activity implements OnClickListener {
                                     long position) {
                 Article article = (Article) adapter.getItem((int) position);
                 setInteger(mRootView, R.id.editTextRef, article.getId());
+                setString(mRootView, R.id.editTextBarCode, article.getBarCode());
             }
         });
 
@@ -72,12 +107,13 @@ public class InventoryActivity extends Activity implements OnClickListener {
     @Override
     public void onClick(View arg0) {
 
-        Log.e("log click", "aaaa");
         switch (arg0.getId()) {
             case R.id.buttonOk:
                 saveInventory();
                 break;
             case R.id.buttonCancel:
+                clearView();
+                Toast.makeText(this, "Annulé", Toast.LENGTH_SHORT).show();
                 break;
             default:
                 break;
@@ -87,14 +123,28 @@ public class InventoryActivity extends Activity implements OnClickListener {
     private void saveInventory() {
 
         // read inventory
-        EditText refStr = (EditText) mRootView.findViewById(R.id.editTextRef);
-        int ref = Integer.parseInt(refStr.getText().toString());
+        int ref = 0;
+        try
+        {
+            ref = Integer.parseInt(mReferenceText.getText().toString());
+        } catch (NumberFormatException e)
+        {
+            Toast.makeText(this, "Référence non définie", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
-        EditText qStr = (EditText) mRootView.findViewById(R.id.editTextQuantite);
-        int q = Integer.parseInt(qStr.getText().toString());
+        int q = 0;
+        try
+        {
+             q = Integer.parseInt(mQuantiteText.getText().toString());
+        }
+        catch (NumberFormatException e)
+        {
+            Toast.makeText(this, "Quantité non définie", Toast.LENGTH_SHORT).show();
+            return;
 
-        EditText locStr = (EditText) mRootView.findViewById(R.id.editTextLoc);
-        String loc = locStr.getText().toString();
+        }
+        String loc = mLocalisationText.getText().toString();
 
         InventoryItem i = new InventoryItem();
         i.setArticleId(ref);
@@ -110,6 +160,18 @@ public class InventoryActivity extends Activity implements OnClickListener {
         }
         dao.createVente(i);
 
+        Toast.makeText(this, "Article ajouté:" + ref, Toast.LENGTH_SHORT).show();
+
+        clearView();
+    }
+
+    private void clearView() {
+
+        mProductText.setText("", false);
+        mBarCode.setText("");
+        mReferenceText.setText("");
+        mQuantiteText.setText("1");
+        mLocalisationText.setText("");
     }
 
     private void setString(View v, int id, String value) {
@@ -130,4 +192,3 @@ public class InventoryActivity extends Activity implements OnClickListener {
         e.setText(Float.toString(value));
     }
 }
-
