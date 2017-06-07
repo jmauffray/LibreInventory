@@ -11,7 +11,6 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.libreinventory.libreinventory.config.Config;
@@ -54,27 +53,25 @@ public class InventoryActivity extends Activity implements OnClickListener {
         b = (Button) mRootView.findViewById(R.id.buttonCancel);
         b.setOnClickListener(this);
 
-        mBarCode.addTextChangedListener(new TextWatcher(){
+        mBarCode.addTextChangedListener(new TextWatcher() {
 
             public void afterTextChanged(Editable s) {
-                if(s.toString().isEmpty()) {
+                if (s.toString().isEmpty()) {
                     return;
                 }
-                    for(Article a:Config.articles)
-                    {
-                        if(a.getBarCode().equals(s.toString()))
-                        {
-                            mReferenceText.setText(String.valueOf(a.getId()));
-                            break;
-                        }
+                for (Article a : Config.articles) {
+                    if (a.getBarCode().equals(s.toString())) {
+                        mReferenceText.setText(String.valueOf(a.getId()));
+                        break;
                     }
+                }
             }
 
-            public void beforeTextChanged(CharSequence s, int start, int count, int after)
-            {}
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
 
-            public void onTextChanged(CharSequence s, int start, int before, int count)
-            {}
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
         });
 
 
@@ -121,22 +118,17 @@ public class InventoryActivity extends Activity implements OnClickListener {
 
         // read inventory
         int ref = 0;
-        try
-        {
+        try {
             ref = Integer.parseInt(mReferenceText.getText().toString());
-        } catch (NumberFormatException e)
-        {
+        } catch (NumberFormatException e) {
             Toast.makeText(this, "Référence non définie", Toast.LENGTH_SHORT).show();
             return;
         }
 
         int q = 0;
-        try
-        {
-             q = Integer.parseInt(mQuantiteText.getText().toString());
-        }
-        catch (NumberFormatException e)
-        {
+        try {
+            q = Integer.parseInt(mQuantiteText.getText().toString());
+        } catch (NumberFormatException e) {
             Toast.makeText(this, "Quantité non définie", Toast.LENGTH_SHORT).show();
             return;
 

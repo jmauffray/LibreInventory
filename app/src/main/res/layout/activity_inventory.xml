@@ -8,27 +8,27 @@
     android:useDefaultMargins="true"
     tools:context="com.libreinventory.libreinventory.InventoryActivity">
 
-        <!-- plante -->
-        <TextView
-            android:layout_height="60dip"
-            android:layout_column="0"
-            android:layout_gravity="right|center"
-            android:layout_row="1"
-            android:gravity="center"
-            android:text="Plante :" />
+    <!-- plante -->
+    <TextView
+        android:layout_height="60dip"
+        android:layout_column="0"
+        android:layout_gravity="right|center"
+        android:layout_row="1"
+        android:gravity="center"
+        android:text="Plante :" />
 
-        <AutoCompleteTextView
-            android:id="@+id/autoCompleteTextProduct"
-            android:layout_width="match_parent"
-            android:layout_column="1"
-            android:layout_gravity="left|top"
-            android:layout_row="1"
-            android:ems="10"
-            android:inputType="textMultiLine"
-            android:text="" >
+    <AutoCompleteTextView
+        android:id="@+id/autoCompleteTextProduct"
+        android:layout_width="match_parent"
+        android:layout_column="1"
+        android:layout_gravity="left|top"
+        android:layout_row="1"
+        android:ems="10"
+        android:inputType="textMultiLine"
+        android:text="">
 
-            <requestFocus />
-        </AutoCompleteTextView>
+        <requestFocus />
+    </AutoCompleteTextView>
 
     <!-- code barre -->
     <TextView
@@ -45,8 +45,7 @@
         android:layout_gravity="left|top"
         android:layout_row="2"
         android:ems="10"
-        android:inputType="number" >
-    </EditText>
+        android:inputType="number"></EditText>
 
     <!-- Reference -->
     <TextView
@@ -63,26 +62,25 @@
         android:layout_gravity="left|top"
         android:layout_row="3"
         android:ems="10"
-        android:inputType="number" >
-    </EditText>
+        android:inputType="number"></EditText>
 
-        <!-- quantite -->
-        <TextView
-            android:layout_height="60dip"
-            android:layout_column="0"
-            android:layout_gravity="right|center"
-            android:layout_row="4"
-            android:text="Quantite :" />
+    <!-- quantite -->
+    <TextView
+        android:layout_height="60dip"
+        android:layout_column="0"
+        android:layout_gravity="right|center"
+        android:layout_row="4"
+        android:text="Quantite :" />
 
-        <EditText
-            android:id="@+id/editTextQuantite"
-            android:layout_width="match_parent"
-            android:layout_column="1"
-            android:layout_gravity="left|top"
-            android:layout_row="4"
-            android:ems="15"
-            android:inputType="numberDecimal"
-            android:text="1" />
+    <EditText
+        android:id="@+id/editTextQuantite"
+        android:layout_width="match_parent"
+        android:layout_column="1"
+        android:layout_gravity="left|top"
+        android:layout_row="4"
+        android:ems="15"
+        android:inputType="numberDecimal"
+        android:text="1" />
 
     <!-- localisation -->
     <TextView
@@ -107,20 +105,20 @@
         android:id="@+id/buttonOk"
         android:layout_width="wrap_content"
         android:layout_height="100sp"
-        android:layout_weight="1"
         android:layout_column="0"
         android:layout_gravity="left|top"
         android:layout_row="6"
-        android:text="Valider"/>
+        android:layout_weight="1"
+        android:text="Valider" />
 
     <Button
         android:id="@+id/buttonCancel"
         android:layout_width="wrap_content"
         android:layout_height="100sp"
-        android:layout_weight="1"
         android:layout_column="1"
         android:layout_gravity="left|top"
         android:layout_row="6"
-        android:text="Annuler"/>
+        android:layout_weight="1"
+        android:text="Annuler" />
 
 </GridLayout>

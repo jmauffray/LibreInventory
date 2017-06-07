@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.libreinventory.libreinventory.MainActivity"
-    tools:layout_editor_absoluteY="73dp"
-    tools:layout_editor_absoluteX="0dp">
+    tools:layout_editor_absoluteX="0dp"
+    tools:layout_editor_absoluteY="73dp">
 
     <GridLayout
         android:layout_width="784dp"
@@ -27,8 +26,8 @@
             android:layout_height="150dp"
             android:layout_column="0"
             android:layout_row="1"
-            android:onClick="delInventory"
             android:background="@android:color/holo_orange_dark"
+            android:onClick="delInventory"
             android:text="Effacer inventaire" />
 
         <Button
