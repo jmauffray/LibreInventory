@@ -1,4 +1,4 @@
-package com.libreinventory.libreinventory;
+package com.libreinventory.libreinventory.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.libreinventory.libreinventory.R;
 import com.libreinventory.libreinventory.config.Config;
 import com.libreinventory.libreinventory.db.InventoryItemDAO;
 import com.libreinventory.libreinventory.model.Article;
@@ -56,12 +57,18 @@ public class InventoryActivity extends Activity implements OnClickListener {
         mBarCode.addTextChangedListener(new TextWatcher() {
 
             public void afterTextChanged(Editable s) {
-                if (s.toString().isEmpty()) {
+                if(Config.articles.isEmpty()) {
+                    return;
+                }
+                int barCodeSize = Config.articles.get(0).getBarCode().length();
+
+                if (s.toString().length() != barCodeSize) {
                     return;
                 }
                 for (Article a : Config.articles) {
                     if (a.getBarCode().equals(s.toString())) {
                         mReferenceText.setText(String.valueOf(a.getId()));
+                        mProductText.setText("");
                         break;
                     }
                 }

@@ -1,4 +1,4 @@
-package com.libreinventory.libreinventory;
+package com.libreinventory.libreinventory.activity;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -8,6 +8,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import com.libreinventory.libreinventory.worker.ExportInventory;
+import com.libreinventory.libreinventory.worker.ImportProduct;
+import com.libreinventory.libreinventory.R;
 import com.libreinventory.libreinventory.db.InventoryItemDAO;
 
 import java.sql.SQLException;

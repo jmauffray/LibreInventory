@@ -1,4 +1,4 @@
-package com.libreinventory.libreinventory;
+package com.libreinventory.libreinventory.worker;
 
 import android.app.ProgressDialog;
 import android.content.Context;
