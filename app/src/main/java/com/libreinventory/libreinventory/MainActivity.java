@@ -16,6 +16,7 @@ import java.sql.SQLException;
 public class MainActivity extends Activity {
 
     private View mView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 

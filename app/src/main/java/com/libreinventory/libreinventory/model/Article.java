@@ -77,6 +77,6 @@ public class Article {
 */
     public String toString() {
         String sep = "/";
-        return mId + sep + mArticle + sep + mBarCode /* + sep + mVariete + sep + mTaille + sep + mOrigine*/;
+        return mId + sep + mArticle  /* + sep + mVariete + sep + mTaille + sep + mOrigine*/;
     }
 }

@@ -25,6 +25,10 @@ import java.util.List;
 
 public class CsvUtil {
 
+    final static int CSV_COLUMN_REFERENCE = 0;
+    final static int CSV_COLUMN_DESCRIPTION = 1;
+    final static int CSV_COLUMN_BARCODE = 6;
+
     static public List<Article> parseCsvArticles(String res) {
         Log.w("csv", "Article parse start" + res);
         List<Article> articles = new ArrayList<Article>();
@@ -48,9 +52,9 @@ public class CsvUtil {
                 }
 
                 Article a = new Article();
-                a.setId(Integer.valueOf(nextLine[0]));
-                a.setArticle(nextLine[1]);
-                a.setBarCode(nextLine[2]);
+                a.setId(Integer.valueOf(nextLine[CSV_COLUMN_REFERENCE]));
+                a.setArticle(nextLine[CSV_COLUMN_DESCRIPTION]);
+                a.setBarCode(nextLine[CSV_COLUMN_BARCODE]);
 
                 articles.add(a);
             }

@@ -17,6 +17,8 @@ import java.util.List;
 
 public class ImportProduct extends AsyncTask<String, String, String> {
 
+    final static String CSV_FILENAME = "products.csv";
+
     Context mContext;
     private ProgressDialog mDialog;
 
@@ -37,15 +39,11 @@ public class ImportProduct extends AsyncTask<String, String, String> {
     @Override
     protected String doInBackground(String... params) {
 
-        File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/products.csv");
+        File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/" + CSV_FILENAME);
 
-        Log.e("article", file.getPath());
         List<Article> articles = CsvUtil.parseCsvArticles(file.getPath());
 
-        for (Article article : articles) {
-            Log.e("article", article.toString());
-        }
-
+        //update Config articles and cache
         Config.articles = articles;
         for (Article article : Config.articles) {
             Config.articlesCache.add(

@@ -57,20 +57,17 @@ public class InventoryActivity extends Activity implements OnClickListener {
         mBarCode.addTextChangedListener(new TextWatcher(){
 
             public void afterTextChanged(Editable s) {
-                if(s.toString().length() == 13)
-                { //EAN13
+                if(s.toString().isEmpty()) {
+                    return;
+                }
                     for(Article a:Config.articles)
                     {
-                        if(a.getBarCode().equals(s))
+                        if(a.getBarCode().equals(s.toString()))
                         {
                             mReferenceText.setText(String.valueOf(a.getId()));
-                        }
-                        else
-                        {
-                            mReferenceText.setText("Code barre inconnu");
+                            break;
                         }
                     }
-                }
             }
 
             public void beforeTextChanged(CharSequence s, int start, int count, int after)
@@ -97,8 +94,8 @@ public class InventoryActivity extends Activity implements OnClickListener {
             public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
                                     long position) {
                 Article article = (Article) adapter.getItem((int) position);
-                setInteger(mRootView, R.id.editTextRef, article.getId());
-                setString(mRootView, R.id.editTextBarCode, article.getBarCode());
+                mReferenceText.setText(Integer.toString(article.getId()));
+                mBarCode.setText("");
             }
         });
 
@@ -174,21 +171,4 @@ public class InventoryActivity extends Activity implements OnClickListener {
         mLocalisationText.setText("");
     }
 
-    private void setString(View v, int id, String value) {
-
-        EditText e = (EditText) v.findViewById(id);
-        e.setText(value);
-    }
-
-    private void setInteger(View v, int id, int value) {
-
-        TextView e = (TextView) v.findViewById(id);
-        e.setText(Integer.toString(value));
-    }
-
-    private void setFloat(View v, int id, float value) {
-
-        TextView e = (TextView) v.findViewById(id);
-        e.setText(Float.toString(value));
-    }
 }
