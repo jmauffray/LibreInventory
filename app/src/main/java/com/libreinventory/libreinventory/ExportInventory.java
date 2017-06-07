@@ -21,6 +21,8 @@ import java.util.List;
 
 public class ExportInventory extends AsyncTask<String, String, String> {
 
+    final static String CSV_SEP = ",";
+
     Context mContext;
     private ProgressDialog dialog;
 
@@ -48,24 +50,24 @@ public class ExportInventory extends AsyncTask<String, String, String> {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        List<InventoryItem> ii = dao.getInventory();
+        List<InventoryItem> inventories = dao.getInventory();
 
         String filename = new SimpleDateFormat("'inventory_'yyyy-MM-dd_hh-mm-ss'.csv'").format(new Date());
         File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/" + filename);
         try {
             FileOutputStream stream = new FileOutputStream(file);
 
-            for (InventoryItem i : ii) {
-                String id = String.valueOf(i.getArticleId());
-                String q = String.valueOf(i.getQuantite());
+            for (InventoryItem i : inventories) {
 
-                stream.write(id.getBytes());
-                stream.write(";".getBytes());
-                stream.write(q.getBytes());
-                stream.write(";".getBytes());
+                stream.write(String.valueOf(i.getArticleId()).getBytes());
+                stream.write(CSV_SEP.getBytes());
+
+                stream.write(String.valueOf(i.getQuantite()).getBytes());
+                stream.write(CSV_SEP.getBytes());
+
                 stream.write(i.getLocalisation().getBytes());
+
                 stream.write("\n".getBytes());
-                Log.e("inv", i.toString());
             }
 
         } catch (FileNotFoundException e) {
@@ -74,7 +76,7 @@ public class ExportInventory extends AsyncTask<String, String, String> {
             e.printStackTrace();
         }
 
-        return String.valueOf(ii.size());
+        return String.valueOf(inventories.size());
     }
 
     protected void onPostExecute(String data) {
