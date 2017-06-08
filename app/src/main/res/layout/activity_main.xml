@@ -3,50 +3,54 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.libreinventory.libreinventory.activity.MainActivity"
-    tools:layout_editor_absoluteX="0dp"
-    tools:layout_editor_absoluteY="73dp">
+    tools:context="com.libreinventory.libreinventory.activity.MainActivity">
 
-    <GridLayout
-        android:layout_width="784dp"
-        android:layout_height="1135dp"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="8dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="4">
 
         <Button
             android:id="@+id/button_write_inventory"
-            android:layout_width="233dp"
-            android:layout_height="150dp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_margin="10sp"
             android:onClick="writeInventory"
-            android:text="Saisir inventaire" />
+            android:text="Saisir inventaire"
+            android:textSize="40sp" />
 
         <Button
             android:id="@+id/button_del_inventory"
-            android:layout_width="232dp"
-            android:layout_height="150dp"
-            android:layout_column="0"
-            android:layout_row="1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_margin="10sp"
             android:background="@android:color/holo_orange_dark"
             android:onClick="delInventory"
-            android:text="Effacer inventaire" />
+            android:text="Effacer inventaire"
+            android:textSize="40sp" />
 
         <Button
             android:id="@+id/button_export_inventory"
-            android:layout_width="229dp"
-            android:layout_height="150dp"
-            android:layout_column="0"
-            android:layout_row="2"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_margin="10sp"
             android:onClick="exportInventory"
-            android:text="Exporter inventaire" />
+            android:text="Exporter inventaire"
+            android:textSize="40sp" />
 
         <Button
             android:id="@+id/button_import_product"
-            android:layout_width="230dp"
-            android:layout_height="150dp"
-            android:layout_column="0"
-            android:layout_row="3"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_margin="10sp"
             android:onClick="importProduct"
-            android:text="Importer articles" />
-    </GridLayout>
+            android:text="Importer articles"
+            android:textSize="40sp" />
+    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
