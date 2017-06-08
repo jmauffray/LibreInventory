@@ -33,19 +33,23 @@ public class InventoryItemDAO {
     }
 
     public void open() throws SQLException {
+
         database = dbHelper.getWritableDatabase();
     }
 
     public void close() {
+
         dbHelper.close();
     }
 
     public void createVente(InventoryItem aVente) {
+
         ContentValues values = getContentValues(aVente);
         database.insert(MySQLiteHelper.TABLE_INVENTORY, null, values);
     }
 
     public List<InventoryItem> getInventory() {
+
         List<InventoryItem> comments = new ArrayList<InventoryItem>();
 
         Cursor cursor = database.query(MySQLiteHelper.TABLE_INVENTORY,
@@ -63,14 +67,13 @@ public class InventoryItemDAO {
         return comments;
     }
 
-    public void delInventory() {
+    public int delInventory() {
 
-        int num = database.delete(MySQLiteHelper.TABLE_INVENTORY, "", new String[]{});
-        Log.e("delete", String.valueOf(num));
-
+        return database.delete(MySQLiteHelper.TABLE_INVENTORY, "", new String[]{});
     }
 
     public ContentValues getContentValues(InventoryItem aVente) {
+
         ContentValues values = new ContentValues();
 
         values.put(MySQLiteHelper.COLUMN_ARTICLE_ID, aVente.getArticleId());
@@ -90,4 +93,5 @@ public class InventoryItemDAO {
 
         return aVente;
     }
+
 }

@@ -35,7 +35,6 @@ public class InventoryItem {
         this.mLocalisation = mLocalisation;
     }
 
-
     public String toString() {
         return "Id:" + mArticleId + " / " + " Q:" + mQuantite + " / Loc:" + mLocalisation;
     }

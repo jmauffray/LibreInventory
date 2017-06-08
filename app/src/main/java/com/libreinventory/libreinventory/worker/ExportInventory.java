@@ -42,7 +42,6 @@ public class ExportInventory extends AsyncTask<String, String, String> {
 
     @Override
     protected String doInBackground(String... params) {
-        Log.e("export", "c");
 
         InventoryItemDAO dao = new InventoryItemDAO(mContext);
         try {

@@ -44,21 +44,22 @@ public class MainActivity extends Activity {
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
 
                     public void onClick(DialogInterface dialog, int whichButton) {
-                        delInventoryImpl(MainActivity.this.mView);
-                        Toast.makeText(MainActivity.this, "Inventaire supprimé", Toast.LENGTH_SHORT).show();
+                        int nb = delInventoryImpl(MainActivity.this.mView);
+                        Toast.makeText(MainActivity.this, "Inventaire supprimé, " + String.valueOf(nb) + " articles inventoriés.",
+                                Toast.LENGTH_SHORT).show();
                     }
                 })
                 .setNegativeButton(android.R.string.no, null).show();
     }
 
-    private void delInventoryImpl(View view) {
+    private int delInventoryImpl(View view) {
         InventoryItemDAO dao = new InventoryItemDAO(view.getContext());
         try {
             dao.open();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        dao.delInventory();
+        return dao.delInventory();
     }
 
     public void exportInventory(View view) {

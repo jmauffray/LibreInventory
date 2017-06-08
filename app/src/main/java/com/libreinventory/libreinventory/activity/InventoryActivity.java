@@ -140,12 +140,11 @@ public class InventoryActivity extends Activity implements OnClickListener {
             return;
 
         }
-        String loc = mLocalisationText.getText().toString();
 
         InventoryItem i = new InventoryItem();
         i.setArticleId(ref);
         i.setQuantite(q);
-        i.setLocalisation(loc);
+        i.setLocalisation(mLocalisationText.getText().toString());
 
         //save
         InventoryItemDAO dao = new InventoryItemDAO(mRootView.getContext());

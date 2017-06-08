@@ -10,14 +10,6 @@ public class Article {
     private String mBarCode;
     private String mArticle;
 
-
-    /*
-    private String mVariete;
-    private String mTaille;
-    private String mPrixTtcPart;
-    private String mOrigine;
-    */
-
     public int getId() {
         return mId;
     }
@@ -42,41 +34,9 @@ public class Article {
         this.mArticle = article;
     }
 
-    /*
-    public String getVariete() {
-        return mVariete;
-    }
-
-    public void setVariete(String variete) {
-        this.mVariete = variete;
-    }
-
-    public String getTaille() {
-        return mTaille;
-    }
-
-    public void setTaille(String taille) {
-        this.mTaille = taille;
-    }
-
-    public String getPrixTtcPart() {
-        return mPrixTtcPart;
-    }
-
-    public void setPrixTtcPart(String prixTtcPart) {
-        this.mPrixTtcPart = prixTtcPart;
-    }
-
-    public String getOrigine() {
-        return mOrigine;
-    }
-
-    public void setOrigine(String origine) {
-        this.mOrigine = origine;
-    }
-*/
     public String toString() {
+
         String sep = "/";
-        return mId + sep + mArticle  /* + sep + mVariete + sep + mTaille + sep + mOrigine*/;
+        return mId + sep + mArticle;
     }
 }

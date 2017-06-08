@@ -30,7 +30,7 @@ public class CsvUtil {
     final static int CSV_COLUMN_BARCODE = 6;
 
     static public List<Article> parseCsvArticles(String res) {
-        Log.w("csv", "Article parse start" + res);
+
         List<Article> articles = new ArrayList<Article>();
 
         if (res.isEmpty()) {
