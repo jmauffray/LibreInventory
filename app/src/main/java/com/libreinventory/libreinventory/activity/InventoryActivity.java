@@ -1,6 +1,7 @@
 package com.libreinventory.libreinventory.activity;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -114,7 +115,7 @@ public class InventoryActivity extends Activity implements OnClickListener {
                 break;
             case R.id.buttonCancel:
                 clearView();
-                Toast.makeText(this, "Annulé", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Annulé", Toast.LENGTH_LONG).show();
                 break;
             default:
                 break;
@@ -128,7 +129,8 @@ public class InventoryActivity extends Activity implements OnClickListener {
         try {
             ref = Integer.parseInt(mReferenceText.getText().toString());
         } catch (NumberFormatException e) {
-            Toast.makeText(this, "Référence non définie", Toast.LENGTH_SHORT).show();
+            Toast toast = Toast.makeText(this, "Référence non définie", Toast.LENGTH_LONG);
+            toast.show();
             return;
         }
 
@@ -136,7 +138,7 @@ public class InventoryActivity extends Activity implements OnClickListener {
         try {
             q = Integer.parseInt(mQuantiteText.getText().toString());
         } catch (NumberFormatException e) {
-            Toast.makeText(this, "Quantité non définie", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Quantité non définie", Toast.LENGTH_LONG).show();
             return;
 
         }
@@ -155,7 +157,7 @@ public class InventoryActivity extends Activity implements OnClickListener {
         }
         dao.createVente(i);
 
-        Toast.makeText(this, "Article ajouté:" + ref, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Article ajouté:" + ref, Toast.LENGTH_LONG).show();
 
         clearView();
     }
