@@ -165,7 +165,7 @@ public class InventoryActivity extends Activity implements OnClickListener {
         mProductText.setText("", false);
         mBarCode.setText("");
         mReferenceText.setText("");
-        mQuantiteText.setText("1");
+        mQuantiteText.setText("");
         mLocalisationText.setText("");
     }
 
