@@ -24,7 +24,8 @@ public class ExportInventory extends AsyncTask<String, String, String> {
     final static String CSV_SEP = ",";
 
     Context mContext;
-    private ProgressDialog dialog;
+    protected ProgressDialog dialog;
+    protected File mFile;
 
     public ExportInventory(Context context) {
         this.mContext = context;
@@ -52,9 +53,9 @@ public class ExportInventory extends AsyncTask<String, String, String> {
         List<InventoryItem> inventories = dao.getInventory();
 
         String filename = new SimpleDateFormat("'inventory_'yyyy-MM-dd_hh-mm-ss'.csv'").format(new Date());
-        File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/" + filename);
+        mFile = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/" + filename);
         try {
-            FileOutputStream stream = new FileOutputStream(file);
+            FileOutputStream stream = new FileOutputStream(mFile);
 
             for (InventoryItem i : inventories) {
 

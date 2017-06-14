@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:weightSum="4">
+        android:weightSum="5">
 
         <Button
             android:id="@+id/button_write_inventory"
@@ -40,6 +40,16 @@
             android:layout_margin="10sp"
             android:onClick="exportInventory"
             android:text="Exporter inventaire"
+            android:textSize="40sp" />
+
+        <Button
+            android:id="@+id/button_send_inventory"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_margin="10sp"
+            android:onClick="sendInventory"
+            android:text="Envoyer inventaire"
             android:textSize="40sp" />
 
         <Button

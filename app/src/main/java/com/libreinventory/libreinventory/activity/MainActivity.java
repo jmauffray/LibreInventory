@@ -12,6 +12,7 @@ import com.libreinventory.libreinventory.worker.ExportInventory;
 import com.libreinventory.libreinventory.worker.ImportProduct;
 import com.libreinventory.libreinventory.R;
 import com.libreinventory.libreinventory.db.InventoryItemDAO;
+import com.libreinventory.libreinventory.worker.SendInventory;
 
 import java.sql.SQLException;
 
@@ -65,6 +66,12 @@ public class MainActivity extends Activity {
     public void exportInventory(View view) {
 
         ExportInventory ip = new ExportInventory(view.getContext());
+        ip.execute();
+    }
+
+    public void sendInventory(View view) {
+
+        SendInventory ip = new SendInventory(view.getContext(), this);
         ip.execute();
     }
 
