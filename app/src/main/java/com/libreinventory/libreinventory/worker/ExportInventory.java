@@ -78,6 +78,21 @@ public class ExportInventory extends AsyncTask<String, String, String> {
         try {
             FileOutputStream stream = new FileOutputStream(mFile);
 
+            //write header
+            stream.write("id".getBytes());
+            stream.write(CSV_SEP.getBytes());
+
+            stream.write("quantite totale".getBytes());
+            stream.write(CSV_SEP.getBytes());
+
+            stream.write("quantite vente".getBytes());
+            stream.write(CSV_SEP.getBytes());
+
+            stream.write("localisation".getBytes());
+
+            stream.write("\n".getBytes());
+
+            //write data
             for (InventoryItem i : inventories) {
 
                 stream.write(String.valueOf(i.getArticleId()).getBytes());
