@@ -32,10 +32,11 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
     public static final String COLUMN_ID = "_id";
     public static final String COLUMN_ARTICLE_ID = "article_id";
     public static final String COLUMN_QUANTITE = "quantite";
+    public static final String COLUMN_QUANTITE_VENTE = "quantite_vente";
     public static final String COLUMN_LOCALISATION = "localisation";
 
     private static final String DATABASE_NAME = "inventory.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
 
     // Database creation sql statement
     private static final String TABLE_INVENTORY_CREATE = "create table "
@@ -43,6 +44,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
             + COLUMN_ID + " integer primary key autoincrement,"
             + COLUMN_ARTICLE_ID + " integer not null,"
             + COLUMN_QUANTITE + " integer not null,"
+            + COLUMN_QUANTITE_VENTE + " integer not null,"
             + COLUMN_LOCALISATION + " string not null"
             + ");";
 

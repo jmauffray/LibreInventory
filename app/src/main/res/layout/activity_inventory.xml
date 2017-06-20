@@ -83,11 +83,33 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Quantite :"
+            android:text="Quantite totale :"
             android:textSize="15sp" />
 
         <EditText
             android:id="@+id/editTextQuantite"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:text="" />
+
+    </LinearLayout>
+
+    <!-- quantite à la vente -->
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="20sp" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Quantite à la vente :"
+            android:textSize="15sp" />
+
+        <EditText
+            android:id="@+id/editTextQuantiteVente"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:inputType="numberDecimal"

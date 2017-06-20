@@ -53,6 +53,7 @@ public class InventoryActivity extends Activity implements OnClickListener {
     private EditText mBarCode;
     private EditText mReferenceText;
     private EditText mQuantiteText;
+    private EditText mQuantiteVenteText;
     private EditText mLocalisationText;
 
     @Override
@@ -66,6 +67,7 @@ public class InventoryActivity extends Activity implements OnClickListener {
         mBarCode = (EditText) mRootView.findViewById(R.id.editTextBarCode);
         mReferenceText = (EditText) mRootView.findViewById(R.id.editTextRef);
         mQuantiteText = (EditText) mRootView.findViewById(R.id.editTextQuantite);
+        mQuantiteVenteText = (EditText) mRootView.findViewById(R.id.editTextQuantiteVente);
         mLocalisationText = (EditText) mRootView.findViewById(R.id.editTextLoc);
 
         //button listeners
@@ -158,7 +160,16 @@ public class InventoryActivity extends Activity implements OnClickListener {
         try {
             q = Integer.parseInt(mQuantiteText.getText().toString());
         } catch (NumberFormatException e) {
-            Toast.makeText(this, "Quantité non définie", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Quantité totale non définie", Toast.LENGTH_LONG).show();
+            return;
+
+        }
+
+        int qv = 0;
+        try {
+            qv = Integer.parseInt(mQuantiteVenteText.getText().toString());
+        } catch (NumberFormatException e) {
+            Toast.makeText(this, "Quantité à la vente non définie", Toast.LENGTH_LONG).show();
             return;
 
         }
@@ -166,6 +177,7 @@ public class InventoryActivity extends Activity implements OnClickListener {
         InventoryItem i = new InventoryItem();
         i.setArticleId(ref);
         i.setQuantite(q);
+        i.setQuantiteVente(qv);
         i.setLocalisation(mLocalisationText.getText().toString());
 
         //save
@@ -188,6 +200,7 @@ public class InventoryActivity extends Activity implements OnClickListener {
         mBarCode.setText("");
         mReferenceText.setText("");
         mQuantiteText.setText("");
+        mQuantiteVenteText.setText("");
         mLocalisationText.setText("");
     }
 

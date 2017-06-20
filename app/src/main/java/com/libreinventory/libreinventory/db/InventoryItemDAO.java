@@ -41,6 +41,7 @@ public class InventoryItemDAO {
     private String[] allColumns = {MySQLiteHelper.COLUMN_ID,
             MySQLiteHelper.COLUMN_ARTICLE_ID,
             MySQLiteHelper.COLUMN_QUANTITE,
+            MySQLiteHelper.COLUMN_QUANTITE_VENTE,
             MySQLiteHelper.COLUMN_LOCALISATION
     };
 
@@ -95,6 +96,7 @@ public class InventoryItemDAO {
 
         values.put(MySQLiteHelper.COLUMN_ARTICLE_ID, aVente.getArticleId());
         values.put(MySQLiteHelper.COLUMN_QUANTITE, aVente.getQuantite());
+        values.put(MySQLiteHelper.COLUMN_QUANTITE_VENTE, aVente.getQuantiteVente());
         values.put(MySQLiteHelper.COLUMN_LOCALISATION, aVente.getLocalisation());
 
         return values;
@@ -106,7 +108,8 @@ public class InventoryItemDAO {
         //aVente.setId((int)cursor.getLong(0));
         aVente.setArticleId((int) cursor.getLong(1));
         aVente.setQuantite(cursor.getInt(2));
-        aVente.setLocalisation(cursor.getString(3));
+        aVente.setQuantiteVente(cursor.getInt(3));
+        aVente.setLocalisation(cursor.getString(4));
 
         return aVente;
     }

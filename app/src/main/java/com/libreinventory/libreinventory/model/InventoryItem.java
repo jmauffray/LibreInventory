@@ -26,6 +26,7 @@ public class InventoryItem {
     //public int mId = 0;
     public int mArticleId = 0;
     public int mQuantite = 0;
+    public int mQuantiteVente = 0;
     private String mLocalisation;
 
     public int getArticleId() {
@@ -40,8 +41,16 @@ public class InventoryItem {
         return mQuantite;
     }
 
+    public int getQuantiteVente() {
+        return mQuantiteVente;
+    }
+
     public void setQuantite(int quantite) {
         this.mQuantite = quantite;
+    }
+
+    public void setQuantiteVente(int quantite) {
+        this.mQuantiteVente = quantite;
     }
 
     public String getLocalisation() {
@@ -53,7 +62,8 @@ public class InventoryItem {
     }
 
     public String toString() {
-        return "Id:" + mArticleId + " / " + " Q:" + mQuantite + " / Loc:" + mLocalisation;
+        return "Id:" + mArticleId + " / " + " Q:" + mQuantite + " / " + " QV:" + mQuantiteVente +
+                " / Loc:" + mLocalisation;
     }
 
 }
