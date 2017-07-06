@@ -89,6 +89,12 @@ public class ExportInventory extends AsyncTask<String, String, String> {
             stream.write(CSV_SEP.getBytes());
 
             stream.write("localisation".getBytes());
+            stream.write(CSV_SEP.getBytes());
+
+            stream.write("commentaire".getBytes());
+            stream.write(CSV_SEP.getBytes());
+
+            stream.write("etiquettes".getBytes());
 
             stream.write("\n".getBytes());
 
@@ -105,6 +111,12 @@ public class ExportInventory extends AsyncTask<String, String, String> {
                 stream.write(CSV_SEP.getBytes());
 
                 stream.write(i.getLocalisation().getBytes());
+                stream.write(CSV_SEP.getBytes());
+
+                stream.write(i.getComment().getBytes());
+                stream.write(CSV_SEP.getBytes());
+
+                stream.write(String.valueOf(i.getEtiquetteNb()).getBytes());
 
                 stream.write("\n".getBytes());
             }

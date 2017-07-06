@@ -42,7 +42,9 @@ public class InventoryItemDAO {
             MySQLiteHelper.COLUMN_ARTICLE_ID,
             MySQLiteHelper.COLUMN_QUANTITE,
             MySQLiteHelper.COLUMN_QUANTITE_VENTE,
-            MySQLiteHelper.COLUMN_LOCALISATION
+            MySQLiteHelper.COLUMN_LOCALISATION,
+            MySQLiteHelper.COLUMN_COMMENT,
+            MySQLiteHelper.COLUMN_ETIQUETTE_NB
     };
 
     public InventoryItemDAO(Context context) {
@@ -98,6 +100,8 @@ public class InventoryItemDAO {
         values.put(MySQLiteHelper.COLUMN_QUANTITE, aVente.getQuantite());
         values.put(MySQLiteHelper.COLUMN_QUANTITE_VENTE, aVente.getQuantiteVente());
         values.put(MySQLiteHelper.COLUMN_LOCALISATION, aVente.getLocalisation());
+        values.put(MySQLiteHelper.COLUMN_COMMENT, aVente.getComment());
+        values.put(MySQLiteHelper.COLUMN_ETIQUETTE_NB, aVente.getEtiquetteNb());
 
         return values;
     }
@@ -110,6 +114,8 @@ public class InventoryItemDAO {
         aVente.setQuantite(cursor.getInt(2));
         aVente.setQuantiteVente(cursor.getInt(3));
         aVente.setLocalisation(cursor.getString(4));
+        aVente.setComment(cursor.getString(5));
+        aVente.setEtiquetteNb(cursor.getInt(6));
 
         return aVente;
     }

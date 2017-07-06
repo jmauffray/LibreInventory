@@ -28,6 +28,8 @@ public class InventoryItem {
     public int mQuantite = 0;
     public int mQuantiteVente = 0;
     private String mLocalisation;
+    private String mComment;
+    private int mEtiquetteNb = 0;
 
     public int getArticleId() {
         return mArticleId;
@@ -61,9 +63,30 @@ public class InventoryItem {
         this.mLocalisation = mLocalisation;
     }
 
+    public String getComment() {
+        return mComment;
+    }
+
+    public void setComment(String mComment) {
+        this.mComment = mComment;
+    }
+
+    public int getEtiquetteNb() {
+        return mEtiquetteNb;
+    }
+
+    public void setEtiquetteNb(int mEtiquetteNb) {
+        this.mEtiquetteNb = mEtiquetteNb;
+    }
+
     public String toString() {
-        return "Id:" + mArticleId + " / " + " Q:" + mQuantite + " / " + " QV:" + mQuantiteVente +
-                " / Loc:" + mLocalisation;
+        return "Id:" + mArticleId +
+                " / Q:" + mQuantite +
+                " / QV:" + mQuantiteVente +
+                " / Loc:" + mLocalisation +
+                " / Com:" + mComment +
+                " / Eti:" + mEtiquetteNb
+                ;
     }
 
 }

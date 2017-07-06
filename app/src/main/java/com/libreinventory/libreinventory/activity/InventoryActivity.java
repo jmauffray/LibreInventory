@@ -55,6 +55,8 @@ public class InventoryActivity extends Activity implements OnClickListener {
     private EditText mQuantiteText;
     private EditText mQuantiteVenteText;
     private EditText mLocalisationText;
+    private EditText mCommentext;
+    private EditText mEtiquetteNbText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +71,8 @@ public class InventoryActivity extends Activity implements OnClickListener {
         mQuantiteText = (EditText) mRootView.findViewById(R.id.editTextQuantite);
         mQuantiteVenteText = (EditText) mRootView.findViewById(R.id.editTextQuantiteVente);
         mLocalisationText = (EditText) mRootView.findViewById(R.id.editTextLoc);
+        mCommentext = (EditText) mRootView.findViewById(R.id.editTextComment);
+        mEtiquetteNbText = (EditText) mRootView.findViewById(R.id.editTextEtiquetteNb);
 
         //button listeners
         Button b = (Button) mRootView.findViewById(R.id.buttonOk);
@@ -174,11 +178,19 @@ public class InventoryActivity extends Activity implements OnClickListener {
 
         }
 
+        int etiNb = 0;
+        try {
+            etiNb = Integer.parseInt(mEtiquetteNbText.getText().toString());
+        } catch (NumberFormatException e) {
+        }
+
         InventoryItem i = new InventoryItem();
         i.setArticleId(ref);
         i.setQuantite(q);
         i.setQuantiteVente(qv);
         i.setLocalisation(mLocalisationText.getText().toString());
+        i.setComment(mCommentext.getText().toString());
+        i.setEtiquetteNb(etiNb);
 
         //save
         InventoryItemDAO dao = new InventoryItemDAO(mRootView.getContext());
@@ -202,6 +214,8 @@ public class InventoryActivity extends Activity implements OnClickListener {
         mQuantiteText.setText("");
         mQuantiteVenteText.setText("");
         mLocalisationText.setText("");
+        mCommentext.setText("");
+        mEtiquetteNbText.setText("");
     }
 
 }

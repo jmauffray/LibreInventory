@@ -23,7 +23,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textMultiLine"
-            android:text="">
+            android:text=""
+            android:background="#c8fbd3">
 
             <requestFocus />
         </AutoCompleteTextView>
@@ -47,7 +48,8 @@
             android:id="@+id/editTextBarCode"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:inputType="number"></EditText>
+            android:inputType="number"
+            android:background="#c8fbd3"></EditText>
 
     </LinearLayout>
 
@@ -69,7 +71,8 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_column="1"
-            android:inputType="number"></EditText>
+            android:inputType="number"
+            android:background="#c8fbd3"></EditText>
 
     </LinearLayout>
 
@@ -91,7 +94,8 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:inputType="numberDecimal"
-            android:text="" />
+            android:text=""
+            android:background="#c8fbd3" />
 
     </LinearLayout>
 
@@ -113,7 +117,8 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:inputType="numberDecimal"
-            android:text="" />
+            android:text=""
+            android:background="#c8fbd3" />
 
     </LinearLayout>
 
@@ -135,7 +140,54 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:inputType="text"
-            android:text="" />
+            android:text=""
+            android:background="#c8fbd3" />
+
+    </LinearLayout>
+
+    <!-- comment -->
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="20sp" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Commentaire :"
+            android:textSize="15sp"  />
+
+        <EditText
+            android:id="@+id/editTextComment"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:text=""
+            android:background="#c8fbd3" />
+
+    </LinearLayout>
+
+    <!-- etiquette number -->
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="20sp" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Etiquettes :"
+            android:textSize="15sp"  />
+
+        <EditText
+            android:id="@+id/editTextEtiquetteNb"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:text=""
+            android:background="#c8fbd3" />
 
     </LinearLayout>
 
