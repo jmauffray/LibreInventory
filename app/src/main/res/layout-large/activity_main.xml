@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.libreinventory.libreinventory.activity.MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="5">
+
+        <Button
+            android:id="@+id/button_write_inventory"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_margin="10sp"
+            android:onClick="writeInventory"
+            android:text="Saisir inventaire"
+            android:textSize="30sp" />
+
+        <Button
+            android:id="@+id/button_del_inventory"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_margin="10sp"
+            android:background="@android:color/holo_orange_dark"
+            android:onClick="delInventory"
+            android:text="Effacer inventaire"
+            android:textSize="30sp" />
+
+        <Button
+            android:id="@+id/button_export_inventory"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_margin="10sp"
+            android:onClick="exportInventory"
+            android:text="Exporter inventaire"
+            android:textSize="30sp" />
+
+        <Button
+            android:id="@+id/button_send_inventory"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_margin="10sp"
+            android:onClick="sendInventory"
+            android:text="Envoyer inventaire"
+            android:textSize="30sp" />
+
+        <Button
+            android:id="@+id/button_import_product"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_margin="10sp"
+            android:onClick="importProduct"
+            android:text="Importer articles"
+            android:textSize="30sp" />
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
