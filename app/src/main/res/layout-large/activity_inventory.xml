@@ -64,6 +64,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Référence :"
+            android:textStyle="bold"
             android:textSize="15sp"  />
 
         <EditText
@@ -87,6 +88,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Quantite totale :"
+            android:textStyle="bold"
             android:textSize="15sp" />
 
         <EditText
@@ -110,6 +112,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Quantite à la vente :"
+            android:textStyle="bold"
             android:textSize="15sp" />
 
         <EditText
