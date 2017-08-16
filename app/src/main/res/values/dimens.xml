@@ -2,4 +2,10 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <dimen name="inventory_input">20sp</dimen>
+    <dimen name="inventory_input_product">15sp</dimen>
+    <dimen name="inventory_button">80sp</dimen>
+    <dimen name="inventory_margin">8sp</dimen>
+
 </resources>

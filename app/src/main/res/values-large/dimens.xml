@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="inventory_input">35sp</dimen>
+    <dimen name="inventory_input_product">20sp</dimen>
+    <dimen name="inventory_button">100sp</dimen>
+    <dimen name="inventory_margin">10sp</dimen>
+
+</resources>
