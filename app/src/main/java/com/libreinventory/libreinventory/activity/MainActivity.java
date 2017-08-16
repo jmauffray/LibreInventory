@@ -102,4 +102,11 @@ public class MainActivity extends Activity {
         ip.execute();
     }
 
+    public void about(View view) {
+
+        //run activity
+        Intent intent = new Intent(this, AboutActivity.class);
+        startActivity(intent);
+    }
+
 }

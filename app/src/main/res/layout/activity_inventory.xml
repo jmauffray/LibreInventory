@@ -15,7 +15,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Plante :"
+            android:text="@string/product_inventory"
             android:textSize="15sp"  />
 
         <AutoCompleteTextView
@@ -41,7 +41,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Code barre :"
+            android:text="@string/barcode_inventory"
             android:textSize="15sp"  />
 
         <EditText
@@ -63,7 +63,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Référence :"
+            android:text="@string/ref_inventory"
             android:textStyle="bold"
             android:textSize="15sp"  />
 
@@ -87,7 +87,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Quantite totale :"
+            android:text="@string/stock_inventory"
             android:textStyle="bold"
             android:textSize="15sp" />
 
@@ -111,7 +111,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Quantite à la vente :"
+            android:text="@string/stock_sell_inventory"
             android:textStyle="bold"
             android:textSize="15sp" />
 
@@ -135,7 +135,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Localisation :"
+            android:text="@string/loc_inventory"
             android:textSize="15sp"  />
 
         <EditText
@@ -158,7 +158,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Commentaire :"
+            android:text="@string/comment_inventory"
             android:textSize="15sp"  />
 
         <EditText
@@ -181,7 +181,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Etiquettes :"
+            android:text="@string/etiquette_inventory"
             android:textSize="15sp"  />
 
         <EditText
@@ -206,14 +206,14 @@
             android:layout_width="fill_parent"
             android:layout_height="80sp"
             android:layout_weight="50"
-            android:text="Valider" />
+            android:text="@string/ok_inventory" />
 
         <Button
             android:id="@+id/buttonCancel"
             android:layout_width="fill_parent"
             android:layout_height="80sp"
             android:layout_weight="50"
-            android:text="Annuler" />
+            android:text="@string/cancel_inventory" />
 
     </LinearLayout>
 

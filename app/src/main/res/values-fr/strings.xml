@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Libre Inventory</string>
+
+    <string name="do_inventory">Saisir inventaire</string>
+    <string name="del_inventory">Effacer inventaire</string>
+    <string name="export_inventory">Exporter inventaire</string>
+    <string name="send_inventory">Envoyer inventaire</string>
+    <string name="import_inventory">Importer articles</string>
+    <string name="about_inventory">A propos</string>
+
+    <string name="product_inventory">Plante</string>
+    <string name="barcode_inventory">Code barre</string>
+    <string name="ref_inventory">Référence</string>
+    <string name="stock_inventory">Quantité totale</string>
+    <string name="stock_sell_inventory">Quantité à la vente</string>
+    <string name="loc_inventory">Localisation</string>
+    <string name="comment_inventory">Commentaire</string>
+    <string name="etiquette_inventory">Etiquettes</string>
+
+    <string name="ok_inventory">Valider</string>
+    <string name="cancel_inventory">Annuler</string>
+
+    <string name="about">Le code source est disponible ici :\n
+                https://github.com/jmauffray/LibreInventory\n
+                Version 0.1\n
+                Contact : jmauffray@gmail.com\n\n
+                == Manuel ==\n
+                Copier le fichier products.csv dans le répertoire de téléchargement d android avec le format CSV suivant (ligne d\'en tête et lignes de données)\n
+                reference,description,,,,,EAN13 barcode\n
+                123,article name,,,,,1234567890123\n\n
+                Lancer l\'application LibreInventory, importer les produits et commencer l\'inventaire.\n
+                Les champs en gras sont obligatoires.\n
+                Quand l\'inventaire est fini, vous pouvez l\'exporter ou l\'envoyer par mail au format CSV.</string>
+
+</resources>

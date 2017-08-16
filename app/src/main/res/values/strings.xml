@@ -2,16 +2,34 @@
     <string name="app_name">Libre Inventory</string>
     <string name="title_activity_inventory">Inventory</string>
 
-    <!-- Strings related to login -->
-    <string name="prompt_email">Email</string>
-    <string name="prompt_password">Password (optional)</string>
-    <string name="action_sign_in">Sign in or register</string>
-    <string name="action_sign_in_short">Sign in</string>
-    <string name="error_invalid_email">This email address is invalid</string>
-    <string name="error_invalid_password">This password is too short</string>
-    <string name="error_incorrect_password">This password is incorrect</string>
-    <string name="error_field_required">This field is required</string>
-    <string name="permission_rationale">"Contacts permissions are needed for providing email
-        completions."
-    </string>
+    <string name="do_inventory">Start inventory</string>
+    <string name="del_inventory">Erase inventory</string>
+    <string name="export_inventory">Export inventory</string>
+    <string name="send_inventory">Send inventory</string>
+    <string name="import_inventory">Import products</string>
+    <string name="about_inventory">About</string>
+
+    <string name="product_inventory">Product</string>
+    <string name="barcode_inventory">Barcode</string>
+    <string name="ref_inventory">Reference</string>
+    <string name="stock_inventory">Stock</string>
+    <string name="stock_sell_inventory">Stock for sale</string>
+    <string name="loc_inventory">Localisation</string>
+    <string name="comment_inventory">Comment</string>
+    <string name="etiquette_inventory">Etiquette</string>
+
+    <string name="ok_inventory">OK</string>
+    <string name="cancel_inventory">Cancel</string>
+
+    <string name="about">Source code available here :\n
+                https://github.com/jmauffray/LibreInventory\n
+                Version 0.1\n
+                Contact : jmauffray@gmail.com\n\n
+                == Quick manual ==\n
+                Copy products.csv file in android download directory with following csv format (header line and data lines)\n
+                reference,description,,,,,EAN13 barcode\n
+                123,article name,,,,,1234567890123\n\n
+                Launch LibreInventory application, import products and then start inventory.\n
+                Bold fields are mandatory.\n
+                When inventory finished you can export or send inventory in csv format.</string>
 </resources>

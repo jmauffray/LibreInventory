@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:weightSum="5">
+        android:weightSum="6">
 
         <Button
             android:id="@+id/button_write_inventory"
@@ -18,7 +18,7 @@
             android:layout_weight="1"
             android:layout_margin="10sp"
             android:onClick="writeInventory"
-            android:text="Saisir inventaire"
+            android:text="@string/do_inventory"
             android:textSize="30sp" />
 
         <Button
@@ -29,7 +29,7 @@
             android:layout_margin="10sp"
             android:background="@android:color/holo_orange_dark"
             android:onClick="delInventory"
-            android:text="Effacer inventaire"
+            android:text="@string/del_inventory"
             android:textSize="30sp" />
 
         <Button
@@ -39,7 +39,7 @@
             android:layout_weight="1"
             android:layout_margin="10sp"
             android:onClick="exportInventory"
-            android:text="Exporter inventaire"
+            android:text="@string/export_inventory"
             android:textSize="30sp" />
 
         <Button
@@ -49,7 +49,7 @@
             android:layout_weight="1"
             android:layout_margin="10sp"
             android:onClick="sendInventory"
-            android:text="Envoyer inventaire"
+            android:text="@string/send_inventory"
             android:textSize="30sp" />
 
         <Button
@@ -59,7 +59,17 @@
             android:layout_weight="1"
             android:layout_margin="10sp"
             android:onClick="importProduct"
-            android:text="Importer articles"
+            android:text="@string/import_inventory"
+            android:textSize="30sp" />
+
+        <Button
+            android:id="@+id/button_about_product"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_margin="10sp"
+            android:onClick="about"
+            android:text="@string/about_inventory"
             android:textSize="30sp" />
     </LinearLayout>
 
