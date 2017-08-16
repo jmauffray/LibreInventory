@@ -71,6 +71,8 @@ public class ImportProduct extends AsyncTask<String, String, Pair<Boolean, Strin
 
         //update Config articles and cache
         Config.articles = articles;
+        //clear cache
+        Config.articlesCache.clear();
         for (Article article : Config.articles) {
             Config.articlesCache.add(
                     new Pair<Article, String>(article, article.toString().toLowerCase()));
