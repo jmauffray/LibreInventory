@@ -21,7 +21,7 @@
     <string name="ok_inventory">Valider</string>
     <string name="cancel_inventory">Annuler</string>
 
-    <string name="about">Le code source est disponible ici :\n
+    <string name="about_text">Le code source est disponible ici :\n
                 https://github.com/jmauffray/LibreInventory\n
                 Version 0.1\n
                 Contact : jmauffray@gmail.com\n\n
