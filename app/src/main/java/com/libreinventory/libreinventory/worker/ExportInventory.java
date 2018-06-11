@@ -137,10 +137,10 @@ public class ExportInventory extends AsyncTask<String, String, String> {
         }
 
         if (data.length() != 0) {
-            Toast.makeText(mContext, "Export de l'inventaire terminé!" + "\n" + data + " produits inventoriés.",
+            Toast.makeText(mContext, "Téléchargement de l'inventaire terminé!" + "\n" + data + " produits inventoriés.",
                     Toast.LENGTH_LONG).show();
         } else {
-            Toast.makeText(mContext, "Export de l'inventaire échoué", Toast.LENGTH_SHORT).show();
+            Toast.makeText(mContext, "Téléchargement de l'inventaire échoué", Toast.LENGTH_SHORT).show();
         }
     }
 

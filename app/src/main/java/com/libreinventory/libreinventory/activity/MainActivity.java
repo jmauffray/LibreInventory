@@ -25,6 +25,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -41,6 +42,7 @@ import java.sql.SQLException;
 public class MainActivity extends Activity {
 
     private View mView;
+    private static final int READ_REQUEST_CODE = 42;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,8 +100,13 @@ public class MainActivity extends Activity {
 
     public void importProduct(View view) {
 
-        ImportProduct ip = new ImportProduct(view.getContext());
-        ip.execute();
+        mView = view;
+
+        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+        intent.addCategory(Intent.CATEGORY_OPENABLE);
+        intent.setType("text/csv");
+
+        startActivityForResult(intent, READ_REQUEST_CODE);
     }
 
     public void about(View view) {
@@ -107,6 +114,21 @@ public class MainActivity extends Activity {
         //run activity
         Intent intent = new Intent(this, AboutActivity.class);
         startActivity(intent);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode,
+                                 int resultCode,
+                                 Intent resultData) {
+
+        if (requestCode == READ_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
+
+            Uri uri = null;
+            if (resultData != null) {
+                ImportProduct ip = new ImportProduct(mView.getContext(), getContentResolver(), resultData.getData());
+                ip.execute();
+            }
+        }
     }
 
 }

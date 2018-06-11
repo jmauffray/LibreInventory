@@ -23,13 +23,13 @@
 
     <string name="about_text">Source code available here :\n
                 https://github.com/jmauffray/LibreInventory\n
-                Version 0.1\n
+                Version 0.2\n
                 Contact : jmauffray@gmail.com\n\n
                 == Quick manual ==\n
-                Copy products.csv file in android download directory with following csv format (header line and data lines)\n
+                Csv file format (header line and data lines) is :\n
                 reference,description,,,,,EAN13 barcode\n
                 123,article name,,,,,1234567890123\n\n
-                Launch LibreInventory application, import products and then start inventory.\n
-                Bold fields are mandatory.\n
-                When inventory finished you can export or send inventory in csv format.</string>
+                Launch LibreInventory application, select your csv file and then start inventory.\n
+                Bold fields are mandatory during inventory.\n
+                When inventory finished you can download or send inventory in csv format.</string>
 </resources>

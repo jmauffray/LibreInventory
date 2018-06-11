@@ -22,7 +22,9 @@
 package com.libreinventory.libreinventory.worker;
 
 import android.app.ProgressDialog;
+import android.content.ContentResolver;
 import android.content.Context;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Environment;
 import android.util.Pair;
@@ -32,18 +34,21 @@ import com.libreinventory.libreinventory.config.Config;
 import com.libreinventory.libreinventory.model.Article;
 import com.libreinventory.libreinventory.util.CsvUtil;
 
-import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.List;
 
 public class ImportProduct extends AsyncTask<String, String, Pair<Boolean, String>> {
 
-    final static String CSV_FILENAME = "products.csv";
-
     Context mContext;
     private ProgressDialog mDialog;
+    private ContentResolver mContentResolver;
+    private Uri mUri;
 
-    public ImportProduct(Context context) {
+    public ImportProduct(Context context, ContentResolver contentResolver, Uri uri) {
         this.mContext = context;
+        this.mContentResolver = contentResolver;
+        this.mUri = uri;
     }
 
     @Override
@@ -59,14 +64,16 @@ public class ImportProduct extends AsyncTask<String, String, Pair<Boolean, Strin
     @Override
     protected Pair<Boolean, String> doInBackground(String... params) {
 
-        File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/" + CSV_FILENAME);
-        if (!file.exists()) {
-            return Pair.create(false, "Fichier non trouvé:" + file.getAbsolutePath());
+        InputStream is = null;
+        try {
+            is = mContentResolver.openInputStream(mUri);
+        } catch (FileNotFoundException e) {
+            return Pair.create(false, "Erreur pour ouvrir le fichier" );
         }
 
-        List<Article> articles = CsvUtil.parseCsvArticles(file.getPath());
+        List<Article> articles = CsvUtil.parseCsvArticles(is);
         if (articles.isEmpty()) {
-            return Pair.create(false, "0 produit importé du fichier:" + file.getAbsolutePath());
+            return Pair.create(false, "0 produit importé" );
         }
 
         //update Config articles and cache

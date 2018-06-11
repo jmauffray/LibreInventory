@@ -31,7 +31,6 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -45,18 +44,12 @@ public class CsvUtil {
     final static int CSV_COLUMN_DESCRIPTION = 1;
     final static int CSV_COLUMN_BARCODE = 6;
 
-    static public List<Article> parseCsvArticles(String res) {
+    static public List<Article> parseCsvArticles(InputStream is) {
 
         List<Article> articles = new ArrayList<Article>();
 
-        if (res.isEmpty()) {
-            return articles;
-        }
-
-        File file = new File(res);
         try {
-
-            CSVReader reader = new CSVReader(new FileReader(file), ',', '\"');
+            CSVReader reader = new CSVReader(new InputStreamReader(is), ',', '\"');
             String[] nextLine;
 
             boolean firstLine = true;
@@ -74,7 +67,6 @@ public class CsvUtil {
 
                 articles.add(a);
             }
-
         } catch (Exception e) {
             Log.e("Error", "Error for importing file");
             Log.e("Error", e.toString());
