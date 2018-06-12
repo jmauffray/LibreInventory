@@ -27,16 +27,16 @@
                 Contact : jmauffray@gmail.com\n\n
 
                 == Manuel ==\n
-                Lancer l\'application LibreInventory, importer les produits en sélectionnant le fichier csv et commencer l\'inventaire.\n
+                Lancer l\'application LibreInventory, importer les produits en sélectionnant le fichier au format CSV et commencer l\'inventaire.\n
                 Les champs en gras sont obligatoires.\n
-                Quand l\'inventaire est fini, vous pouvez l\'exporter ou l\'envoyer par mail au format CSV.\n\n
+                Quand l\'inventaire est fini, vous pouvez l\'exporter dans le répertoire de téléchargement ou l\'envoyer par mail au format CSV.\n\n
 
                 == Format des données ==\n
                 Le format CSV du fichier d\'entrée est le suivant (ligne d\'en tête et lignes de données)\n
-                reference,description,,,,,EAN13 barcode\n
-                123,article name,,,,,1234567890123\n\n
+                reference,description,EAN13 code barre\n
+                123,article name,1234567890123\n\n
                 Le format CSV du fichier de sortie est le suivant (ligne d\'en tête et lignes de données)\n
-                id, quantite totale, quantite vente, localisation, commentaire,  etiquettes\n
+                reference, quantite totale, quantite vente, localisation, commentaire,  etiquettes\n
                 123,20,10,loc1,comment,5\n\n
     </string>
 

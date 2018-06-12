@@ -42,7 +42,7 @@ public class CsvUtil {
 
     final static int CSV_COLUMN_REFERENCE = 0;
     final static int CSV_COLUMN_DESCRIPTION = 1;
-    final static int CSV_COLUMN_BARCODE = 6;
+    final static int CSV_COLUMN_BARCODE = 2;
 
     static public List<Article> parseCsvArticles(InputStream is) {
 
